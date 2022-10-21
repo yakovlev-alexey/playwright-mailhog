@@ -1,9 +1,22 @@
-import type { PlaywrightTestArgs, TestFixture } from "@playwright/test";
+import type {
+  APIRequestContext,
+  APIResponse,
+  PlaywrightTestArgs,
+  TestFixture,
+} from "@playwright/test";
 
 import type { Messages, PaginationQuery, SearchQuery } from "./mailhog";
 
 type MailHogFixtures = {
   mhApiUrl: string;
+  mhApiRequest: <
+    T extends Exclude<keyof APIRequestContext, "dispose" | "storageState">
+  >(
+    method: T,
+    path: string,
+    options: Parameters<APIRequestContext[T]>[1]
+  ) => Promise<APIResponse>;
+
   mhGetAllEmails: (query?: PaginationQuery) => Promise<Messages>;
   mhSearchEmails: (query?: SearchQuery) => Promise<Messages>;
 

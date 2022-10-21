@@ -1,7 +1,8 @@
 import { mhApiUrl } from "./fixtures/api-url";
+import { mhApiRequest } from "./fixtures/api-request";
 
-import { mhGetAllEmails } from "./fixtures/get-all-emails";
 import { mhSearchEmails } from "./fixtures/search-emails";
+import { mhGetAllEmails } from "./fixtures/get-all-emails";
 
 import { mhGetEmailsByRecipient } from "./fixtures/get-emails-by-recipient";
 import { mhGetEmailsByContent } from "./fixtures/get-emails-by-content";
@@ -19,6 +20,7 @@ const makeMailHogFixtures = ({
 }: MailHogFixturesConfiguration): MailHogTestFixtures => {
   return {
     mhApiUrl: mhApiUrl(mailhogUrl),
+    mhApiRequest,
 
     mhGetAllEmails,
     mhSearchEmails,
