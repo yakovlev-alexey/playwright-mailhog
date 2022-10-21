@@ -9,7 +9,7 @@ const mhApiRequest: MailHogTestFixtures["mhApiRequest"] = async (
     path,
     options
   ) => {
-    return await request[method](`${mhApiUrl}/${path}`, {
+    return await request[method](`${mhApiUrl}${path}`, {
       ...options,
       headers: {
         ...(mhApiAuthorizationHeader && {
