@@ -1,5 +1,15 @@
 {
   "name": "playwright-mailhog",
+  "description": "Playwright fixtures to easily integrate with MailHog",
+  "keywords": [
+    "playwright",
+    "mailhog",
+    "email",
+    "e2e",
+    "testing",
+    "transcational-email",
+    "2fa"
+  ],
   "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
