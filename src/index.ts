@@ -14,8 +14,8 @@ import type { MailHogTestFixtures, MailHogFixtures } from "./types/fixtures";
 
 type MailHogFixturesConfiguration = {
   /**
-   * HTTP(S) address where your mailhog instance is available without trailing slash
-   * @example "https://mailhog.example.com"
+   * HTTP(S) address where your mailhog instance API is available without trailing slash
+   * @example "https://mailhog.example.com/api"
    */
   mailhogUrl: string;
   /**
