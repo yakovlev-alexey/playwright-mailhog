@@ -21,7 +21,7 @@ type MailHogFixtures = {
   >(
     method: T,
     path: string,
-    options: Parameters<APIRequestContext[T]>[1]
+    options?: Parameters<APIRequestContext[T]>[1]
   ) => Promise<APIResponse>;
 
   mhGetAllEmails: (query?: PaginationQuery) => Promise<Messages>;
