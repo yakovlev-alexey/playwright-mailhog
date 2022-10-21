@@ -2,11 +2,11 @@ import type { Messages, PaginationQuery } from "../types/mailhog";
 import type { MailHogTestFixtures } from "../types/fixtures";
 
 const mhGetAllEmails: MailHogTestFixtures["mhGetAllEmails"] = async (
-  { mhApiUrl, request },
+  { mhApiRequest },
   use
 ) => {
   const getAllEmails = async (query?: PaginationQuery) => {
-    const response = await request.get(`${mhApiUrl}/v2/messages`, {
+    const response = await mhApiRequest!("get", "/v2/messages", {
       params: query,
     });
 
