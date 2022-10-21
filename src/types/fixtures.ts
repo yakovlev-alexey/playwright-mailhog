@@ -9,6 +9,12 @@ import type { Messages, PaginationQuery, SearchQuery } from "./mailhog";
 
 type MailHogFixtures = {
   mhApiUrl: string;
+  /**
+   * Makes a request to MailHog with authentication if provided
+   * @param method HTTP method
+   * @param path full path excluding `mailhogUrl` configuration option
+   * @param options request options
+   */
   mhApiRequest: <
     T extends Exclude<keyof APIRequestContext, "dispose" | "storageState">
   >(
