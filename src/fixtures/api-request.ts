@@ -1,7 +1,7 @@
 import type { MailHogFixtures, MailHogTestFixtures } from "../types/fixtures";
 
 const mhApiRequest: MailHogTestFixtures["mhApiRequest"] = async (
-  { mhApiUrl, request },
+  { mhApiUrl, mhApiAuthorizationHeader, request },
   use
 ) => {
   const makeRequest: MailHogFixtures["mhApiRequest"] = async (
@@ -9,7 +9,15 @@ const mhApiRequest: MailHogTestFixtures["mhApiRequest"] = async (
     path,
     options
   ) => {
-    return await request[method](`${mhApiUrl}/${path}`, options);
+    return await request[method](`${mhApiUrl}/${path}`, {
+      ...options,
+      headers: {
+        ...(mhApiAuthorizationHeader && {
+          Authorization: mhApiAuthorizationHeader,
+        }),
+        ...options?.headers,
+      },
+    });
   };
 
   await use(makeRequest);

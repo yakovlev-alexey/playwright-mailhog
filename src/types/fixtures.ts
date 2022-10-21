@@ -9,6 +9,7 @@ import type { Messages, PaginationQuery, SearchQuery } from "./mailhog";
 
 type MailHogFixtures = {
   mhApiUrl: string;
+  mhApiAuthorizationHeader: string | undefined;
   /**
    * Makes a request to MailHog with authentication if provided
    * @param method HTTP method

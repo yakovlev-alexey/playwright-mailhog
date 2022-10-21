@@ -1,4 +1,6 @@
 import { mhApiUrl } from "./fixtures/api-url";
+import { mhApiAuthorizationHeader } from "./fixtures/api-authorization-header";
+
 import { mhApiRequest } from "./fixtures/api-request";
 
 import { mhSearchEmails } from "./fixtures/search-emails";
@@ -26,9 +28,12 @@ type MailHogFixturesConfiguration = {
 
 const makeMailHogFixtures = ({
   mailhogUrl,
+  basicAuthCredentials,
 }: MailHogFixturesConfiguration): MailHogTestFixtures => {
   return {
     mhApiUrl: mhApiUrl(mailhogUrl),
+    mhApiAuthorizationHeader: mhApiAuthorizationHeader(basicAuthCredentials),
+
     mhApiRequest,
 
     mhGetAllEmails,
