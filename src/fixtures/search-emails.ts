@@ -1,12 +1,12 @@
 import type { Messages, PaginationQuery } from "../types/mailhog";
 import type { MailHogTestFixtures } from "../types/fixtures";
 
-const mhGetAllEmails: MailHogTestFixtures["mhGetAllEmails"] = async (
+const mhSearchEmails: MailHogTestFixtures["mhSearchEmails"] = async (
   { mhApiUrl, request },
   use
 ) => {
-  const getAllEmails = async (query?: PaginationQuery) => {
-    const response = await request.get(`${mhApiUrl}/v2/messages`, {
+  const searchEmails = async (query?: PaginationQuery) => {
+    const response = await request.get(`${mhApiUrl}/v2/search`, {
       params: query,
     });
 
@@ -15,7 +15,7 @@ const mhGetAllEmails: MailHogTestFixtures["mhGetAllEmails"] = async (
     return messages;
   };
 
-  await use(getAllEmails);
+  await use(searchEmails);
 };
 
-export { mhGetAllEmails };
+export { mhSearchEmails };

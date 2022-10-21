@@ -1,7 +1,13 @@
-import { mhGetAllEmails } from "./fixtures/get-all-emails";
 import { mhApiUrl } from "./fixtures/api-url";
 
-import { MailHogTestFixtures } from "./types/fixtures";
+import { mhGetAllEmails } from "./fixtures/get-all-emails";
+import { mhSearchEmails } from "./fixtures/search-emails";
+
+import { mhGetEmailsByRecipient } from "./fixtures/get-emails-by-recipient";
+import { mhGetEmailsByContent } from "./fixtures/get-emails-by-content";
+import { mhGetEmailsBySender } from "./fixtures/get-emails-by-sender";
+
+import type { MailHogTestFixtures, MailHogFixtures } from "./types/fixtures";
 
 type MailHogFixturesConfiguration = {
   mailhogUrl: string;
@@ -13,8 +19,16 @@ const makeMailHogFixtures = ({
 }: MailHogFixturesConfiguration): MailHogTestFixtures => {
   return {
     mhApiUrl: mhApiUrl(mailhogUrl),
-    mhGetAllEmails: mhGetAllEmails(),
+
+    mhGetAllEmails,
+    mhSearchEmails,
+
+    mhGetEmailsBySender,
+    mhGetEmailsByRecipient,
+    mhGetEmailsByContent,
   };
 };
 
-export { makeMailHogFixtures as makeMailhogFixtures };
+export { makeMailHogFixtures };
+
+export type { MailHogFixtures, MailHogFixturesConfiguration };

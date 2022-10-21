@@ -46,4 +46,11 @@ type SearchQuery = {
   query: string;
 } & PaginationQuery;
 
-export { Path, MessagePart, Message, Messages, PaginationQuery, SearchQuery };
+export type {
+  Path,
+  MessagePart,
+  Message,
+  Messages,
+  PaginationQuery,
+  SearchQuery,
+};

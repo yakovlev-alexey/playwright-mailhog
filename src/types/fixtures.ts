@@ -1,10 +1,24 @@
-import { PlaywrightTestArgs, TestFixture } from "@playwright/test";
+import type { PlaywrightTestArgs, TestFixture } from "@playwright/test";
 
-import { Messages, PaginationQuery } from "./mailhog";
+import type { Messages, PaginationQuery, SearchQuery } from "./mailhog";
 
 type MailHogFixtures = {
   mhApiUrl: string;
   mhGetAllEmails: (query?: PaginationQuery) => Promise<Messages>;
+  mhSearchEmails: (query?: SearchQuery) => Promise<Messages>;
+
+  mhGetEmailsBySender: (
+    sender: string,
+    query?: PaginationQuery
+  ) => Promise<Messages>;
+  mhGetEmailsByRecipient: (
+    recipient: string,
+    query?: PaginationQuery
+  ) => Promise<Messages>;
+  mhGetEmailsByContent: (
+    content: string,
+    query?: PaginationQuery
+  ) => Promise<Messages>;
 };
 
 type MailHogTestFixture<T> = TestFixture<
@@ -16,4 +30,4 @@ type MailHogTestFixtures = {
   [K in keyof MailHogFixtures]: MailHogTestFixture<MailHogFixtures[K]>;
 };
 
-export { MailHogTestFixture, MailHogFixtures, MailHogTestFixtures };
+export type { MailHogTestFixture, MailHogFixtures, MailHogTestFixtures };
