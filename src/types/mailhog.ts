@@ -33,7 +33,7 @@ type Messages = {
   total: number;
   start: number;
   count: number;
-  messages: Message[];
+  items: Message[];
 };
 
 type PaginationQuery = {
